@@ -62,7 +62,9 @@ public class Thing : MonoBehaviour
 
     bool IsGrabbed()
     {
-        bool grab = if()
+        bool grab = transform.GetComponent<OVRGrabbable>().isGrabbed;
+
+        return grab;
     }
 
     void GiveForce(Transform handPos, float magnitudeForce)
