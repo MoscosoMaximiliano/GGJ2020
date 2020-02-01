@@ -42,18 +42,27 @@ public class Thing : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Vector3 mag = OVRInput.GetLocalControllerVelocity(other.gameObject.GetComponent<HandControllerAction>().GetController());
-
-            float valueMagniture = Mathf.Clamp01(mag.magnitude);
-
-            Debug.Log("Punch force: " + mag.magnitude);
-
-            if (mag.magnitude > 1.2f)
+            if(!IsGrabbed())
             {
-                GiveForce(other.gameObject.transform, mag.magnitude);
-                RepairConstruct();
+                Vector3 mag = OVRInput.GetLocalControllerVelocity(other.gameObject.GetComponent<HandControllerAction>().GetController());
+
+                float valueMagniture = Mathf.Clamp01(mag.magnitude);
+
+                Debug.Log("Punch force: " + mag.magnitude);
+
+                if (mag.magnitude > 1.2f)
+                {
+                    GiveForce(other.gameObject.transform, mag.magnitude);
+                    RepairConstruct();
+                }
             }
+            
         }
+    }
+
+    bool IsGrabbed()
+    {
+        bool grab = if()
     }
 
     void GiveForce(Transform handPos, float magnitudeForce)
