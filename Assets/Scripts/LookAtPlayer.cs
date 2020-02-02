@@ -1,0 +1,12 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LookAtPlayer : MonoBehaviour
+{
+    
+    void Update()
+    {
+        transform.LookAt(GameObject.FindGameObjectWithTag("MainCamera").gameObject.transform);
+    }
+}
